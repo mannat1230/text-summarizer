@@ -1,18 +1,19 @@
 from transformers import pipeline
 import gradio as gr
 
-# define the model
+# Define the model
 model = pipeline("summarization")
 
-# define the predict function
+# Define the predict function
 def predict(prompt):
     summary = model(prompt)[0]["summary_text"]
     return summary
 
-
+# Using gr.Blocks() to create the interface
 with gr.Blocks() as demo:
     textbox = gr.Textbox(placeholder="Enter text block to summarize", lines=4)
-    gr.Interface(fn=predict, inputs=textbox, outputs='text')
+    output = gr.Textbox()
+    submit_btn = gr.Button("Summarize")
+    submit_btn.click(fn=predict, inputs=textbox, outputs=output)
 
 demo.launch()
-
