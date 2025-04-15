@@ -21,4 +21,6 @@ jobs:
           git config --global user.name "Your Name"
           git remote add space https://mannat1231:$HF@huggingface.co/spaces/mannat1231/text-summarizer-gradio
       - name: Push to hub
-        run: git push --force space main
+        env:
+          HF: ${{ secrets.HF }}
+        run: git push --force https://mannat1231:$HF@huggingface.co/spaces/mannat1231/text-summarizer-gradio
