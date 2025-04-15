@@ -17,8 +17,8 @@ jobs:
         env:
           HF: ${{ secrets.HF }}
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"
+          git config --global user.email "mannat1230@users.noreply.github.com"
+          git config --global user.name "mannat1230"
           git remote add space https://mannat1231:$HF@huggingface.co/spaces/mannat1231/text-summarizer-gradio
       - name: Push to hub
         env:
