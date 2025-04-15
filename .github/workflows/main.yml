@@ -15,14 +15,12 @@ jobs:
           fetch-depth: 0
       - name: Add remote 
         env:
-          HF: ${{ secrets.HF }}  # Make sure your Hugging Face token is stored in GitHub Secrets as 'HF'
+          HF: ${{ secrets.HF }}
         run: |
-          # Add Hugging Face as a remote
-          git remote add space https://huggingface.co/spaces/mannat1231/text-summarizer-gradio
-          
-          # Authenticate using the Hugging Face token
-          git config --global credential.helper store
-          echo "https://huggingface.co:${{ secrets.HF }}@huggingface.co" > ~/.git-credentials
-          
-          # Now push to Hugging Face Space
-          git push --force space main
+          git config --global user.email "mannat1230@users.noreply.github.com"
+          git config --global user.name "mannat1230"
+          git remote add space https://mannat1231:$HF@huggingface.co/spaces/mannat1231/text-summarizer-gradio
+      - name: Push to hub
+        env:
+          HF: ${{ secrets.HF }}
+        run: git push --force https://mannat1231:$HF@huggingface.co/spaces/mannat1231/text-summarizer-gradio
